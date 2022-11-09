@@ -6,21 +6,40 @@ export default function Weather(props)
 {
     let [ready, setReady] = useState(false);
     let [city, setCity] = useState(props.defaultCity);
-    let [temperature, setTemperature] = useState(null);
-    let [humidity, setHumidity] = useState(null);
-    let [wind, setWind] = useState(null);
+    let [date, setDate] = useState(null);
     let [description, setDescription] = useState(null);
     let [icon, setIcon] = useState(null);
     let [icon_url, setIconUrl] = useState(null);
+    let [temperature, setTemperature] = useState(null);
+    let [humidity, setHumidity] = useState(null);
+    let [wind, setWind] = useState(null);
+
+    function formatDate(date) {
+        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        let day = days[date.getDay()];
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        if (hours < 10)
+        {
+            return `${day} 0${hours}:${minutes}`;    
+        }
+        if (minutes < 10)
+        {
+            return `${day} ${hours}:0${minutes}`;    
+        }
+        return `${day} ${hours}:${minutes}`;
+    }
 
     function handleResponse(response){
+        let date = new Date();
         setCity(response.data.city);
-        setTemperature(Math.round(response.data.temperature.current));
-        setHumidity(Math.round(response.data.temperature.humidity));
-        setWind(Math.round(response.data.wind.speed));
+        setDate(formatDate(date));
         setDescription(response.data.condition.description);
         setIcon(response.data.condition.icon);
         setIconUrl(response.data.condition.icon_url);
+        setTemperature(Math.round(response.data.temperature.current));
+        setHumidity(Math.round(response.data.temperature.humidity));
+        setWind(Math.round(response.data.wind.speed));
         setReady(true);
         console.log(response);
     }
@@ -41,7 +60,7 @@ export default function Weather(props)
             </form>
             <h1>{city}</h1>
             <ul>
-                <li>Wednesday 07:00</li>
+                <li>{date}</li>
                 <li>{description}</li>
             </ul>
             <div className='row mt-3'>
