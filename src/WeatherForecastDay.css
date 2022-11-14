@@ -1,0 +1,6 @@
+.WeatherForecastDay {
+    border: 1px solid rgb(156, 156, 156);
+    padding: 10px 3px;
+    border-radius: 5px;
+    margin: 7px 2px;
+}

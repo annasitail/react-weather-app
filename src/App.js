@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <Weather />
-      <footer>This project was created by Anna Sitailo <a href='https://github.com/annasitail'>and ount-sourced on GitHub</a></footer>
+      <footer>This project was created by Anna Sitailo and <a href='https://github.com/annasitail'>out-sourced on GitHub</a></footer>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import "./Weather.css";
 
 import WeatherInfo from './WeatherInfo';
-// import WeatherForecast from './WeatherForecast';
+import WeatherForecast from './WeatherForecast';
 
 export default function Weather()
 {
@@ -65,6 +65,8 @@ export default function Weather()
                 </div>
             </form>
             <WeatherInfo weather={weather}/>
+            <WeatherForecast iconUrl={weather.iconUrl} icon={weather.icon} city={weather.city}/>
+
         </div>
         );
     }
